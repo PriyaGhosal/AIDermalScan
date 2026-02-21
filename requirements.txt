@@ -7,3 +7,4 @@ reportlab
 opencv-python==4.10.0.84
 flask
 gunicorn
+pandas==2.2.2

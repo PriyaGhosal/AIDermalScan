@@ -8,7 +8,7 @@ import time
 from datetime import datetime
 
 # PATHS
-MODEL_PATH = "models/AIDermalScan_MobileNetV2_Final.h5"
+MODEL_PATH = "AIDermalScan_MobileNetV2_Final.h5"
 PROTO = "face_detector/deploy.prototxt"
 WEIGHTS = "face_detector/res10_300x300_ssd_iter_140000.caffemodel"
 CSV_PATH = "output/predictions.csv"

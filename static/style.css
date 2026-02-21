@@ -1,0 +1,241 @@
+/* ---------- Global ---------- */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e5e7eb;
+}
+
+/* ---------- Hero Title---------- */
+.hero-title {
+    margin-top: 50px;
+    text-align: center;
+    font-size: 3.8rem;              
+    font-weight: 900;               
+    letter-spacing: 3px;
+    text-transform: uppercase;
+
+    background: linear-gradient(
+        90deg,
+        #38bdf8,
+        #22c55e,
+        #6366f1,
+        #38bdf8
+    );
+    background-size: 300% 300%;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    text-shadow:
+        0 0 15px rgba(56, 189, 248, 0.6),
+        0 0 40px rgba(99, 102, 241, 0.6);
+
+    animation: glowPulse 3s ease-in-out infinite alternate,
+               gradientMove 6s ease infinite;
+}
+
+
+/* ---------- Hero Subtitle ---------- */
+.hero-subtitle {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+    color: #cbd5f5;
+    opacity: 0.9;
+    text-transform: uppercase;
+}
+
+
+.hero-title {
+    animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+    from {
+        text-shadow:
+            0 0 10px rgba(56, 189, 248, 0.3),
+            0 0 20px rgba(99, 102, 241, 0.2);
+    }
+    to {
+        text-shadow:
+            0 0 20px rgba(56, 189, 248, 0.6),
+            0 0 40px rgba(99, 102, 241, 0.5);
+    }
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+
+
+/* ---------- Container ---------- */
+.container {
+    max-width: 900px;
+    margin: auto;
+    background: #020617;
+    border-radius: 16px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+}
+
+/* ---------- Upload Form ---------- */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+input[type="file"] {
+    padding: 12px;
+    width: 100%;
+    border-radius: 10px;
+    border: 1px dashed #38bdf8;
+    background: #020617;
+    color: #cbd5f5;
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 999px;
+    font-size: 16px;
+    font-weight: 600;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    color: #020617;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(56,189,248,0.4);
+}
+
+/* ---------- Result Section ---------- */
+.result {
+    margin-top: 40px;
+    text-align: center;
+}
+
+.image-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.image-row img {
+    width: 350px;
+    border-radius: 12px;
+    border: 2px solid #38bdf8;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+    display: inline-block;
+    margin: 15px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #38bdf8, #6366f1);
+    color: #020617;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+/* ---------- Table---------- */
+table {
+    width: 100%;
+    margin-top: 25px;
+    border-collapse: collapse;
+    background: rgba(15, 23, 42, 0.9);
+    border-radius: 11px;
+    overflow: hidden;
+}
+
+th, td {
+    border: 1px solid #38bdf8;
+    padding: 10px 12px;
+    text-align: center;
+    font-size: 14px;
+}
+
+th {
+    background: rgba(56, 189, 248, 0.15);
+    color: #7dd3fc;
+    font-weight: 600;
+}
+
+td {
+    color: #e5e7eb;
+}
+
+tr:hover {
+    background: rgba(56, 189, 248, 0.08);
+}
+
+.time-box {
+    margin: 16px auto;  
+    padding: 14px;
+    width: 100%;
+    background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+    border-radius: 6px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #00ff99;
+    letter-spacing: 0.5px;
+}
+
+/* ---------- Prediction Label ---------- */
+.prediction-label {
+    display: inline-block;
+    margin: 12px auto 0;
+    background: rgba(0, 0, 0, 0.75);              
+    box-shadow: 0 0 12px rgba(0, 255, 153, 0.35);
+    border-radius: 8px;
+    padding: 6px 10px;                 
+    font-size: 16px;                   
+    font-family: monospace;
+    letter-spacing: 0.8px;
+    
+}
+
+/* ---------- Confidence Bar ---------- */
+.confidence-bar {
+    width: 100%;
+    height: 18px;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 8px;
+}
+
+.confidence-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #22c55e, #38bdf8);
+    transition: width 0.5s ease-in-out;
+}
+
+.confidence-text {
+    text-align: center;
+    margin-top: 6px;
+    color: #cbd5f5;
+    font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    color: #64748b;
+    font-size: 14px;
+}

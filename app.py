@@ -28,8 +28,14 @@ def index():
             file.save(original_path)
             image = cv2.imread(original_path)
 
-            annotated, row = process_image(image, file.filename)
+            if image is None:
+                return "Error: Unable to read image"
 
+            try:
+                annotated, row = process_image(image, file.filename)
+            except Exception as e:
+                return f"Error occurred: {str(e)}"
+                                                                                                                                                                                                                 
             if row is not None:
                 cv2.imwrite(annotated_path, annotated)
                 

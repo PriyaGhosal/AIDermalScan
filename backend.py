@@ -28,7 +28,14 @@ IMG_SIZE = 224
 CONF_THRESHOLD = 0.3
 
 # LOAD MODEL & FACE DETECTOR
-model = load_model(MODEL_PATH, compile=False)
+model = None
+
+def get_model():
+    global model
+    if model is None:
+        from tensorflow.keras.models import load_model
+        model = load_model(MODEL_PATH, compile=False)
+    return model
 face_net = cv2.dnn.readNetFromCaffe(PROTO, WEIGHTS)
 
 # SAVE TO CSV
@@ -74,11 +81,15 @@ def process_image(image, filename):
 
     # -------- FACE CROP --------
     face = image[box_y1:box_y2, box_x1:box_x2]
-    face = cv2.resize(face, (IMG_SIZE, IMG_SIZE))
+    # reduce size first (for speed + memory)
+    face = cv2.resize(face, (160, 160))
+    # then match model input
+    face = cv2.resize(face, (224, 224))
     face = face.astype("float32") / 255.0
     face = np.expand_dims(face, axis=0)
 
     # -------- MODEL PREDICTION --------
+    model = get_model()
     preds = model.predict(face, verbose=0)[0]
     import gc
     gc.collect()

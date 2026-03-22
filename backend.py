@@ -80,6 +80,8 @@ def process_image(image, filename):
 
     # -------- MODEL PREDICTION --------
     preds = model.predict(face, verbose=0)[0]
+    import gc
+    gc.collect()
     class_index = int(np.argmax(preds))
     class_prob = float(preds[class_index])
     predicted_class = CLASS_NAMES[class_index]

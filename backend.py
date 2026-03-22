@@ -24,11 +24,11 @@ AGE_BUCKETS = {
     "wrinkles": (40, 60)
 }
 
-IMG_SIZE = 128
+IMG_SIZE = 224
 CONF_THRESHOLD = 0.3
 
 # LOAD MODEL & FACE DETECTOR
-model = load_model(MODEL_PATH)
+model = load_model(MODEL_PATH, compile=False)
 face_net = cv2.dnn.readNetFromCaffe(PROTO, WEIGHTS)
 
 # SAVE TO CSV
